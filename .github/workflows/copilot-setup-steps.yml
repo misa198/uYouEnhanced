@@ -44,13 +44,6 @@ jobs:
           echo "Found version reference in: $YT_VERSION_FILE"
           echo "This helps Copilot detect when patches break due to upstream updates."
 
-      - name: Dry-run tweak build
-        run: |
-          echo "Running dry-run build to detect patch failures..."
-          make clean
-          make package FINALPACKAGE=0 || true
-          echo "Build completed (errors allowed). Copilot will analyze logs."
-
       - name: Collect build logs
         run: |
           mkdir -p build-logs
